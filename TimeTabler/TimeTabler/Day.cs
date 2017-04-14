@@ -40,9 +40,16 @@ namespace TimeTabler {
 
         public override string ToString() {
             string s = Title + "\n";
-            foreach(KeyValuePair<DateTime, Task> pair in Tasks) {
-                s += (pair.Key.ToString("t") + " " + pair.Value);
-                s += "\n";
+            List<string> Printed = new List<string>();
+            foreach(KeyValuePair<DateTime, Task> Pair in Tasks) {
+                if (Printed.Contains(Pair.Value.Title))
+                    continue;
+                else {
+                    s += (Pair.Value + " " + Pair.Value.StartTime.ToString("t") + " - " +
+                        Pair.Value.EndTime.ToString("t"));
+                    s += "\n";
+                    Printed.Add(Pair.Value.Title);
+                }
             }
             return s;
         }
