@@ -25,6 +25,7 @@ namespace TimeTabler {
             Solve(Init);*/
             Week W = new Week();
             //Console.WriteLine(W);
+            //Console.Read();
             Node Init = new Node(W, null, GetTasks());
             Solve(Init);
             Console.Read();
@@ -78,6 +79,8 @@ namespace TimeTabler {
             Console.WriteLine("Which strategy would you like to use?");
             Console.WriteLine("1) Depth First Search");
             Console.WriteLine("2) Breadth First Search");
+            Console.WriteLine("3) Minimize time per day heuristic");
+            Console.WriteLine("4) Minimize tasks per day heuristic");
             int X;
             int.TryParse(Console.ReadLine(), out X);
             switch(X) {
@@ -86,6 +89,12 @@ namespace TimeTabler {
                     break;
                 case 2:
                     Strat = new BreadthFirstSearch();
+                    break;
+                case 3:
+                    Strat = new AStarSearch(new LowTimePerDayHeuristic());
+                    break;
+                case 4:
+                    Strat = new AStarSearch(new LowTaskPerDayHeuristic());
                     break;
                 default:
                     Console.WriteLine("I don't understand, exiting!");

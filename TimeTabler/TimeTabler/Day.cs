@@ -11,17 +11,24 @@ namespace TimeTabler {
         public string Title { get; set; }
         public SortedDictionary<DateTime, Task> Tasks { get; private set; }
 
+        private DateTime DayEnd;
+
         public Day(string Title) {
             this.Title = Title;
             Tasks = new SortedDictionary<DateTime, Task>(new TimeComparer());
+            DateTime Now = DateTime.Now;
+            DayEnd = new DateTime(Now.Year, Now.Month, Now.Day, 22, 0, 0);
         }
 
         public Day(Day Day) {
             this.Title = Day.Title;
             this.Tasks = new SortedDictionary<DateTime, Task>(Day.Tasks);
+            this.DayEnd = Day.DayEnd;
         }
 
         public bool AddTask(Task Task) {
+            if (Task.EndTime > DayEnd)
+                return false;
             try {
                 SortedDictionary<DateTime, Task> NewTasks = new SortedDictionary<DateTime, Task>(Tasks);
                 NewTasks.Add(Task.StartTime, Task);
