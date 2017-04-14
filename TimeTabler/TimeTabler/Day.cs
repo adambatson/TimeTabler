@@ -9,11 +9,11 @@ namespace TimeTabler {
     class Day {
 
         public string Title { get; set; }
-        public Dictionary<DateTime, Task> Tasks { get; private set; }
+        public SortedDictionary<DateTime, Task> Tasks { get; private set; }
 
         public Day(string Title) {
             this.Title = Title;
-            Tasks = new Dictionary<DateTime, Task>();
+            Tasks = new SortedDictionary<DateTime, Task>(new TimeComparer());
         }
 
         public bool AddTask(Task Task) {
