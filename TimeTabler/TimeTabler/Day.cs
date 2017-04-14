@@ -16,6 +16,11 @@ namespace TimeTabler {
             Tasks = new SortedDictionary<DateTime, Task>(new TimeComparer());
         }
 
+        public Day(Day Day) {
+            this.Title = Day.Title;
+            this.Tasks = new SortedDictionary<DateTime, Task>(Day.Tasks);
+        }
+
         public bool AddTask(Task Task) {
             try {
                 SortedDictionary<DateTime, Task> NewTasks = new SortedDictionary<DateTime, Task>(Tasks);

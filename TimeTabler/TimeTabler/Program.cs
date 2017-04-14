@@ -8,6 +8,7 @@ namespace TimeTabler {
 
     class Program {
         static void Main(string[] args) {
+            //DateTime Start = new DateTime(0, 0, 0, 8, 30, 0);
             //Day D = new Day("Monday");
             //D.AddTask(new Task("Task 1", new DateTime(2017, 2, 2, 9, 0, 0), new DateTime(2017, 2, 2, 9, 30, 0)));
             //Console.WriteLine(D);
@@ -19,6 +20,8 @@ namespace TimeTabler {
             foreach (KeyValuePair<string, TimeSpan> Pair in Tasks) {
                 Console.WriteLine(Pair.Key + " " + Pair.Value.Minutes + " minutes");
             }
+            Node Init = new Node(D, null, Tasks);
+            List<Node> Nodes = Init.Expand();
             Console.Read();
         }
 
