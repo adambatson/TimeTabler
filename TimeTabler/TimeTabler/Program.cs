@@ -13,7 +13,7 @@ namespace TimeTabler {
             //D.AddTask(new Task("Task 1", new DateTime(2017, 2, 2, 9, 0, 0), new DateTime(2017, 2, 2, 9, 30, 0)));
             //Console.WriteLine(D);
             //D.AddTask(new Task("Task 3", new DateTime(2017, 2, 2, 9, 15, 0), new DateTime(2017, 2, 2, 10, 40, 0)));
-            Day D = GetKnownEvents();
+            /*Day D = GetKnownEvents();
             Console.WriteLine(D);
             Dictionary<string, TimeSpan> Tasks = GetTasks();
             Console.WriteLine("Tasks to schedule");
@@ -22,7 +22,9 @@ namespace TimeTabler {
             }
             Node Init = new Node(D, null, Tasks);
             //List<Node> Nodes = Init.Expand();
-            Solve(Init);
+            Solve(Init);*/
+            Week W = new Week();
+            Console.WriteLine(W);
             Console.Read();
         }
 

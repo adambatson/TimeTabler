@@ -52,6 +52,7 @@
     <Compile Include="SearchStrategy.cs" />
     <Compile Include="Task.cs" />
     <Compile Include="TimeComparer.cs" />
+    <Compile Include="Week.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
