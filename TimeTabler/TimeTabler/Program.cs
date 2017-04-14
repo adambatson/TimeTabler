@@ -14,6 +14,11 @@ namespace TimeTabler {
             //D.AddTask(new Task("Task 3", new DateTime(2017, 2, 2, 9, 15, 0), new DateTime(2017, 2, 2, 10, 40, 0)));
             Day D = GetKnownEvents();
             Console.WriteLine(D);
+            Console.WriteLine("Tasks to schedule");
+            Dictionary<string, TimeSpan> Tasks = GetTasks();
+            foreach(KeyValuePair<string, TimeSpan> Pair in Tasks) {
+                Console.WriteLine(Pair.Key + " " + Pair.Value.Minutes + " minutes");
+            }
             Console.Read();
         }
 
@@ -40,6 +45,25 @@ namespace TimeTabler {
                 else break;
             } while (true);
             return D;
+        }
+
+        static Dictionary<string, TimeSpan> GetTasks() {
+            Dictionary<string, TimeSpan> Tasks = new Dictionary<string, TimeSpan>();
+            while(true) {
+                Console.WriteLine("Enter task name");
+                string Name = Console.ReadLine();
+                int Minutes;
+                Console.WriteLine("Enter estimated completion time in minutes");
+                int.TryParse(Console.ReadLine(), out Minutes);
+                Tasks.Add(Name, new TimeSpan(0, Minutes, 0));
+
+                Console.WriteLine("Would you like to enter more? [Y/n]");
+                string Res = Console.ReadLine();
+
+                if (Res == "y" || Res == "Y" || Res == "") continue;
+                else break;
+            }
+            return Tasks;
         }
     }
 }
