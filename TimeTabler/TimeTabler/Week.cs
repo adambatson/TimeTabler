@@ -23,6 +23,13 @@ namespace TimeTabler {
             PopulateCalander();
         }
 
+        public Week(Week Week) {
+            this.Days = new Day[7];
+            for(int i = 0; i < 7; i++) {
+                this.Days[i] = new Day(Week.Days[i]);
+            }
+        }
+
         public override string ToString() {
             string S = "";
             for(int i = 0; i < 7; i++) {

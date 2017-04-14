@@ -24,7 +24,9 @@ namespace TimeTabler {
             //List<Node> Nodes = Init.Expand();
             Solve(Init);*/
             Week W = new Week();
-            Console.WriteLine(W);
+            //Console.WriteLine(W);
+            Node Init = new Node(W, null, GetTasks());
+            Solve(Init);
             Console.Read();
         }
 
