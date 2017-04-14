@@ -21,7 +21,8 @@ namespace TimeTabler {
                 Console.WriteLine(Pair.Key + " " + Pair.Value.Minutes + " minutes");
             }
             Node Init = new Node(D, null, Tasks);
-            List<Node> Nodes = Init.Expand();
+            //List<Node> Nodes = Init.Expand();
+            Solve(Init);
             Console.Read();
         }
 
@@ -62,11 +63,31 @@ namespace TimeTabler {
 
                 Console.WriteLine("Would you like to enter more? [Y/n]");
                 string Res = Console.ReadLine();
-
                 if (Res == "y" || Res == "Y" || Res == "") continue;
                 else break;
             }
             return Tasks;
+        }
+
+        static void Solve(Node Initial) {
+            SearchStrategy Strat = null;
+            Console.WriteLine("Which strategy would you like to use?");
+            Console.WriteLine("1) Depth First Search");
+            Console.WriteLine("2) Breadth First Search");
+            int X;
+            int.TryParse(Console.ReadLine(), out X);
+            switch(X) {
+                case 1:
+                    Strat = new DepthFirstSearch();
+                    break;
+                case 2:
+                    Strat = new BreadthFirstSearch();
+                    break;
+                default:
+                    Console.WriteLine("I don't understand, exiting!");
+                    return;
+            }
+            Console.WriteLine(Strat.Solve(Initial));
         }
     }
 }

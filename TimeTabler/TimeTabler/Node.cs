@@ -40,5 +40,13 @@ namespace TimeTabler {
             return Nodes;
         }
 
+        public bool IsValid() {
+            return TasksToSched.Count == 0;
+        }
+
+        public override string ToString() {
+            return Day.ToString();
+        }
+
     }
 }
