@@ -18,13 +18,15 @@ namespace TimeTabler {
 
         public bool AddTask(Task Task) {
             try {
-                Tasks.Add(Task.StartTime, Task);
-                Tasks.Add(Task.EndTime, Task);
+                SortedDictionary<DateTime, Task> NewTasks = new SortedDictionary<DateTime, Task>(Tasks);
+                NewTasks.Add(Task.StartTime, Task);
+                NewTasks.Add(Task.EndTime, Task);
                 DateTime Time = Task.StartTime.Add(new TimeSpan(0, 30, 0)); //Half hour increments
                 while(Time < Task.EndTime) {
-                    Tasks.Add(Time, Task);
+                    NewTasks.Add(Time, Task);
                     Time = Time.Add(new TimeSpan(0, 30, 0));
                 }
+                Tasks = NewTasks;
                 return true;
             } catch(ArgumentException) {
                 return false;

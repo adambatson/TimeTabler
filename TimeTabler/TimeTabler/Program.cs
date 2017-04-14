@@ -14,9 +14,9 @@ namespace TimeTabler {
             //D.AddTask(new Task("Task 3", new DateTime(2017, 2, 2, 9, 15, 0), new DateTime(2017, 2, 2, 10, 40, 0)));
             Day D = GetKnownEvents();
             Console.WriteLine(D);
-            Console.WriteLine("Tasks to schedule");
             Dictionary<string, TimeSpan> Tasks = GetTasks();
-            foreach(KeyValuePair<string, TimeSpan> Pair in Tasks) {
+            Console.WriteLine("Tasks to schedule");
+            foreach (KeyValuePair<string, TimeSpan> Pair in Tasks) {
                 Console.WriteLine(Pair.Key + " " + Pair.Value.Minutes + " minutes");
             }
             Console.Read();
