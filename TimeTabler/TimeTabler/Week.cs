@@ -55,5 +55,13 @@ namespace TimeTabler {
             }
         }
 
+        public int GetGapTime() {
+            int Sum = 0;
+            foreach(Day D in Days) {
+                Sum += D.GetGapTime();
+            }
+            return Sum;
+        }
+
     }
 }

@@ -61,5 +61,21 @@ namespace TimeTabler {
             return s;
         }
 
+        /// <summary>
+        /// Gets "free" time between tasks
+        /// </summary>
+        /// <returns></returns>
+        public int GetGapTime() {
+            Task[] T = Tasks.Values.Distinct().ToArray();
+            DateTime Now = DateTime.Now;
+            DateTime Elapsed = new DateTime(Now.Year, Now.Month, Now.Day, 0, 0, 0);
+            int TimeElapsed = 0;
+            for(int i = 0; i < T.Count() - 1; i++) {
+                TimeSpan Diff = T[i + 1].StartTime.Subtract(T[i].EndTime);
+                TimeElapsed += (Diff.Hours * 60) + Diff.Minutes;
+            }
+            return TimeElapsed;
+        }
+
     }
 }

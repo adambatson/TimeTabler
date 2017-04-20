@@ -81,6 +81,7 @@ namespace TimeTabler {
             Console.WriteLine("2) Breadth First Search");
             Console.WriteLine("3) Minimize time per day heuristic");
             Console.WriteLine("4) Minimize tasks per day heuristic");
+            Console.WriteLine("5) Simulated Anneling");
             int X;
             int.TryParse(Console.ReadLine(), out X);
             switch(X) {
@@ -96,6 +97,10 @@ namespace TimeTabler {
                 case 4:
                     Strat = new AStarSearch(new LowTaskPerDayHeuristic());
                     break;
+                case 5:
+                    SimulatedAnnealer SA = new SimulatedAnnealer(Initial);
+                    Console.WriteLine(SA.Anneal());
+                    return;
                 default:
                     Console.WriteLine("I don't understand, exiting!");
                     return;
