@@ -81,7 +81,7 @@ namespace TimeTabler {
             Console.WriteLine("2) Breadth First Search");
             Console.WriteLine("3) Minimize time per day heuristic");
             Console.WriteLine("4) Minimize tasks per day heuristic");
-            Console.WriteLine("5) Simulated Anneling");
+            Console.WriteLine("5) Simulated Annealing");
             int X;
             int.TryParse(Console.ReadLine(), out X);
             switch(X) {
